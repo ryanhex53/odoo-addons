@@ -1,0 +1,49 @@
+<odoo>
+  <record id="res_config_settings_view_form" model="ir.ui.view">
+    <field name="name">res.config.settings.view.form</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="base.res_config_settings_view_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//div[@id='invite_users']" position="after">
+        <div id="twilio_sms">
+          <h2>Twilio SMS</h2>
+          <div class="row mt16 o_settings_container" name="twilio_sms_setting_container">
+            <div class="col-12 col-lg-6 o_setting_box" id="twilio_enabeld">
+              <div class="o_setting_left_pane">
+                <field name="twilio_enabeld" />
+              </div>
+              <div class="o_setting_right_pane">
+                <label string="Enable Twilio SMS" for="twilio_enabeld" />
+                <div class="text-muted">
+                  Override the IAP settings for enabling Twilio SMS
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 o_setting_box" id="twilio_settings"
+              attrs="{'invisible': [('twilio_enabeld','=',False)]}">
+              <div class="o_setting_right_pane">
+                <div class="content-group">
+                  <div class="row">
+                    <label for="twilio_account_sid" string="SID"
+                      class="col-3 col-lg-3 o_light_label" />
+                    <field name="twilio_account_sid" class="oe_inline" required="1" />
+                  </div>
+                  <div class="row">
+                    <label for="twilio_auth_token" string="Token"
+                      class="col-3 col-lg-3 o_light_label" />
+                    <field name="twilio_auth_token" class="oe_inline" required="1" password="1" />
+                  </div>
+                  <div class="row">
+                    <label for="twilio_number" string="Number"
+                      class="col-3 col-lg-3 o_light_label" />
+                    <field name="twilio_number" class="oe_inline" required="1" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </xpath>
+    </field>
+  </record>
+</odoo>
